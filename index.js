@@ -8,7 +8,6 @@ const bodyParser = require('body-parser');
 const ListingRoute = require('./routes/listing');
 const cookieParser = require('cookie-parser');
 const path = require('path');
-const _dirname=path.resolve();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
@@ -17,10 +16,8 @@ app.use('/api/user', UserRouter);
 app.use('/api/auth', AuthRouter);
 app.use('/api/listing', ListingRoute);
 
-app.use(express.static(path.join(_dirname,'/Frontend/dist')));
-
-app.get('*',(req,res)=>{
-    res.sendFile(path.join(_dirname,'Frontend','dist','index.html'))
+app.get('/',(req,res)=>{
+    res.send("working!");
 })
 
 app.use((err, req, res, next) => {
