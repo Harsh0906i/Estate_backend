@@ -5,7 +5,7 @@ function verifyUser(req, res, next) {
     const token = req.cookies.__cf_bm;
     console.log("token : ",token);
     if (!token) {
-        return next(errorHandler(401,'Unauthorised'))
+        return next(errorHandler(401,'Unauthorised',token))
     }
 
     jwt.verify(token, process.env.JWT, (err, user) => {
