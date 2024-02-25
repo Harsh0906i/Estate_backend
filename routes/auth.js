@@ -35,7 +35,7 @@ router.post('/signin', async (req, res, next) => {
             res.status(404).send('Wrong credentials!');
         }
         const token = await jwt.sign({ id: Valid._id }, "cnbfR@@^bsbsdbsbg$@")
-        res.cookie('access_token', token, { httpOnly: true,secure:true }).status(200).json(Valid);
+        res.cookie('access_token', token, { httpOnly: true,secure:true,sameSite:'none',domain:'vercel.app' }).status(200).json(Valid);
 
     } catch (error) {
         next(error);
