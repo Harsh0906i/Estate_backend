@@ -6,10 +6,10 @@ function verifyUser(req, res, next) {
     console.log("token : ",token);
     if (!token) {
         res.send("t : ",token);
-        return
+        return  next(errorHandler(401,'Unauthorised'))
     }
 
-    jwt.verify(token, process.env.JWT, (err, user) => {
+    jwt.verify(token,"cnbfR@@^bsbsdbsbg$@", (err, user) => {
         if (err) {
             return next(errorHandler(403,'Forbidden'))
         }
@@ -21,4 +21,4 @@ function verifyUser(req, res, next) {
 module.exports = verifyUser;
 
 
-// next(errorHandler(401,'Unauthorised'))
+//

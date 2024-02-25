@@ -4,7 +4,7 @@ const router = express.Router();
 let Listing = require('../models/listing');
 const errorHandeler = require('../utils/error');
 
-router.post('/create', async (req, res, next) => {
+router.post('/create',verifyUser, async (req, res, next) => {
     try {
         const createdListing = await Listing.create(req.body);
         return res.status(200).send(createdListing);
