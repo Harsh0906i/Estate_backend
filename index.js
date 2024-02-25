@@ -1,6 +1,7 @@
 require('dotenv').config({ path: '.env' });
 const express = require('express');
 const app = express();
+let jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const UserRouter = require('./routes/User');
 const AuthRouter = require('./routes/auth');
@@ -18,7 +19,7 @@ app.use('/api/auth', AuthRouter);
 app.use('/api/listing', ListingRoute);
 
 app.get('/',(req,res)=>{
-  const token = jwt.sign({ id: Valid._id }, "cnbfR@@^bsbsdbsbg$@")
+  const token = jwt.sign({ id: "chgfdhgf" }, "cnbfR@@^bsbsdbsbg$@")
         res.cookie('access_token', token, { httpOnly: true,secure:true }).status(200).json(token);
 
 })
