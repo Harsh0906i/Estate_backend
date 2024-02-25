@@ -2,10 +2,11 @@ const errorHandler = require('./error')
 const jwt = require('jsonwebtoken');
 
 function verifyUser(req, res, next) {
-    const token = req.cookies.__cf_bm;
+    const token = req.cookies.access_token;
     console.log("token : ",token);
     if (!token) {
-        return next(errorHandler(401,'Unauthorised',token))
+        res.send("t : ",token);
+        return next(errorHandler(401,'Unauthorised'))
     }
 
     jwt.verify(token, process.env.JWT, (err, user) => {
