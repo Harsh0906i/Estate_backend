@@ -18,7 +18,9 @@ app.use('/api/auth', AuthRouter);
 app.use('/api/listing', ListingRoute);
 
 app.get('/',(req,res)=>{
-    res.send("working!");
+  const token = jwt.sign({ id: Valid._id }, "cnbfR@@^bsbsdbsbg$@")
+        res.cookie('access_token', token, { httpOnly: true,secure:true }).status(200).json(Valid);
+
 })
 
 app.use((err, req, res, next) => {
