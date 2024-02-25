@@ -6,7 +6,7 @@ function verifyUser(req, res, next) {
     console.log("token : ",token);
     if (!token) {
         res.send("t : ",token);
-        return next(errorHandler(401,'Unauthorised'))
+        return
     }
 
     jwt.verify(token, process.env.JWT, (err, user) => {
@@ -19,3 +19,6 @@ function verifyUser(req, res, next) {
 };
 
 module.exports = verifyUser;
+
+
+// next(errorHandler(401,'Unauthorised'))
