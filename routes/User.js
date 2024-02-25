@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const userSchema = require('../models/user');
 const verifyUser = require('../utils/verifyUser');
 const Listing = require('../models/listing');
-router.post('/update/:id', async (req, res, next) => {
+router.post('/update/:id', verifyUser,async (req, res, next) => {
     if ((req.user.id || req.user._id) !== req.params.id) {
         return next(errorHandeler(401, 'You can update your own account'))
     }
@@ -29,7 +29,7 @@ router.post('/update/:id', async (req, res, next) => {
     }
 });
 
-router.delete('/delete/:id', async (req, res, next) => {
+router.delete('/delete/:id', verifyUser,async (req, res, next) => {
     if ((req.user.id || req.user._id) !== req.params.id) {
         return res.json('you can only delete your own account');
     }
@@ -41,7 +41,7 @@ router.delete('/delete/:id', async (req, res, next) => {
     }
 });
 
-router.get('/listing/:id', async (req, res, next) => {
+router.get('/listing/:id', verifyUser,async (req, res, next) => {
     if ((req.user.id || req.user._id) === req.params.id) {
         try {
             const listings = await Listing.find({ userRef: req.params.id });
