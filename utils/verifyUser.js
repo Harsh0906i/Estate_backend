@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 function verifyUser(req, res, next) {
     const token = req.cookies.access_token;
     if (!token) {
-        return res.send("t : ", req.cookies);
+        return res.send(req.cookies);
     }
 
     jwt.verify(token,"cnbfR@@^bsbsdbsbg$@", (err, user) => {
