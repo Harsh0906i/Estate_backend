@@ -4,8 +4,7 @@ const jwt = require('jsonwebtoken');
 function verifyUser(req, res, next) {
     const token = req.cookies.access_token;
     if (!token) {
-        res.send("t : ", req.cookies);
-        return  next(errorHandler(401,'Unauthorised'))
+        return res.send("t : ", req.cookies);
     }
 
     jwt.verify(token,"cnbfR@@^bsbsdbsbg$@", (err, user) => {
@@ -20,4 +19,4 @@ function verifyUser(req, res, next) {
 module.exports = verifyUser;
 
 
-//
+//next(errorHandler(401,'Unauthorised'))
