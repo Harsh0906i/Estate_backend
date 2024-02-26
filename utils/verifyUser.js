@@ -3,9 +3,9 @@ const jwt = require('jsonwebtoken');
 
 function verifyUser(req, res, next) {
     // Access the full cookie object from req.cookies
-    const token = req.headers.Set-Cookie;
+    const token = req.headers;
 if (!token) {
-        return next(errorHandler(401,'Unauthorised'))
+        return token
     }
  jwt.verify(token,"cnbfR@@^bsbsdbsbg$@", (err, user) => {
         if (err) {
