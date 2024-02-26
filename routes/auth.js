@@ -47,7 +47,7 @@ router.post('/google', async (req, res, next) => {
         const user = await userSchema.findOne({ email })
         if (user) {
             const token = jwt.sign({ _id: user._id }, "cnbfR@@^bsbsdbsbg$@");
-            res.cookie('access_token', token, { httpOnly: true }).status(200).json(user);
+            res.cookie('access_token', token, { httpOnly: false }).status(200).json(user);
         }
         else {
             const generatedPassword = Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8);
@@ -55,7 +55,7 @@ router.post('/google', async (req, res, next) => {
             const newUser = await new userSchema({ username: req.body.name, email: req.body.email, password: hash, avatar: req.body.photo })
             await newUser.save();
             const token = jwt.sign({ id: newUser._id },"cnbfR@@^bsbsdbsbg$@");
-            res.cookie('access_token', token, { httpOnly: true }).status(200).json(newUser);
+            res.cookie('access_token', token, { httpOnly: false }).status(200).json(newUser);
         }
     } catch (error) {
         console.log(error)
