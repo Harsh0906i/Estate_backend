@@ -38,12 +38,16 @@ router.post('/signin', async (req, res, next) => {
         if(!token){
             res.status(404).json('token not generated')
         }
-        res.cookie('access_token', token, { httpOnly: true,secure:true }).status(200).json(Valid);
+
+        // Store token in session
+        req.session.token = token;
+
+        res.status(200).json(Valid);
 
     } catch (error) {
         next(error);
     }
-})
+});
 router.post('/google', async (req, res, next) => {
     try {
         const { email } = req.body;
