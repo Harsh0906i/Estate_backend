@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 function verifyUser(req, res, next) {
     // Access the full cookie object from req.cookies
-    const token = req.cookies.access_token;
+    const token = req.headers.Set-Cookie;
 if (!token) {
         return next(errorHandler(401,'Unauthorised'))
     }
