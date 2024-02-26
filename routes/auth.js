@@ -35,19 +35,12 @@ router.post('/signin', async (req, res, next) => {
             res.status(404).send('Wrong credentials!');
         }
         const token = jwt.sign({ id: Valid._id }, "cnbfR@@^bsbsdbsbg$@")
-        if(!token){
-            res.status(404).json('token not generated')
-        }
-
-        // Store token in session
-        req.session.token = token;
-
-        res.status(200).json(Valid);
+        res.cookie('access_token', token, { httpOnly: true,secure:true }).status(200).json(Valid,' ',token);
 
     } catch (error) {
         next(error);
     }
-});
+})
 router.post('/google', async (req, res, next) => {
     try {
         const { email } = req.body;
