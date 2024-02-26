@@ -9,7 +9,11 @@ const bodyParser = require('body-parser');
 const ListingRoute = require('./routes/listing');
 const cookieParser = require('cookie-parser');
 const path = require('path');
-const cors=require('cors')
+const cors=require('cors');
+const session=require('express-session');
+app.use(session({
+    secret:"dfkjnkjfjdb"
+}));
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
