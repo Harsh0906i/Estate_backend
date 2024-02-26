@@ -10,13 +10,7 @@ const ListingRoute = require('./routes/listing');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const cors=require('cors');
-const session=require('express-session');
 app.use(cors());
-app.use(session({
-    secret: 'your-secret-key', // Change this to a secure random string
-    resave: false,
-    saveUninitialized: true
-}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
