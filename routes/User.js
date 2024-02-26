@@ -47,10 +47,10 @@ router.get('/listing/:id', verifyUser,async (req, res, next) => {
             const listings = await Listing.find({ userRef: req.params.id });
             res.status(200).json(listings);
         } catch (error) {
-            next(error);
+           res.send('error');
         }
     } else {
-        return next(errorHandeler(401, 'You can only view your own listings!'));
+        res.status(401).json('not allowed');
     }
 });
 
