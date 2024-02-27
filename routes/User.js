@@ -7,7 +7,7 @@ const verifyUser = require('../utils/verifyUser');
 const Listing = require('../models/listing');
 router.post('/update/:id', verifyUser,async (req, res, next) => {
     if ((req.user.id || req.user._id) !== req.params.id) {
-        return next(errorHandeler(401, 'You can update your own account'))
+        return next(req.user.id , req.user._id , req.params.id)
     }
     try {
         if (req.body.password) {
