@@ -37,7 +37,7 @@ main()
         console.log("success");
     }).catch((err) => {
         console.log(err);
-    });
+    }); 
 async function main() {
     await mongoose.connect('mongodb+srv://harshitsingharya24:rFkHIdbVHfG8BqIe@mern-realestate.v0tzpwt.mongodb.net/?retryWrites=true&w=majority&appName=mern-RealEstate');
 };
