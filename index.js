@@ -40,7 +40,7 @@ main()
     }); 
 async function main() {
     await mongoose.connect('mongodb+srv://harshitsingharya24:rFkHIdbVHfG8BqIe@mern-realestate.v0tzpwt.mongodb.net/?retryWrites=true&w=majority&appName=mern-RealEstate');
-};
+}; 
 
 app.listen(8080, () => {
     console.log('Running on port 8080');
