@@ -39,7 +39,7 @@ main()
         console.log(err);
     }); 
 async function main() {
-    await mongoose.connect('mongodb+srv://harshitsingharya24:rFkHIdbVHfG8BqIe@mern-realestate.v0tzpwt.mongodb.net/?retryWrites=true&w=majority&appName=mern-RealEstate');
+    await mongoose.connect('mongodb+srv://harshitsingharya24:vglESlijTegUPrXP@cluster0.m4h7jqf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
 }; 
 
 app.listen(8080, () => {
